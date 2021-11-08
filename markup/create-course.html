@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Treehouse Full Stack JavaScript Project 10 | Full Stack App with React and a REST API">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <title>Courses</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <link href="../styles/reset.css" rel="stylesheet">
+    <link href="../styles/global.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="root">
+        <header>
+            <div class="wrap header--flex">
+                <h1 class="header--logo"><a href="index.html">Courses</a></h1>
+                <nav>
+                    <ul class="header--signedin">
+                        <li>Welcome, Joe Smith!</li>
+                        <li><a href="sign-out.html">Sign Out</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <div class="wrap">
+                <h2>Create Course</h2>
+                <div class="validation--errors">
+                    <h3>Validation Errors</h3>
+                    <ul>
+                        <li>Please provide a value for "Title"</li>
+                        <li>Please provide a value for "Description"</li>
+                    </ul>
+                </div>
+                <form>
+                    <div class="main--flex">
+                        <div>
+                            <label for="courseTitle">Course Title</label>
+                            <input id="courseTitle" name="courseTitle" type="text" value="">
+
+                            <p>By Joe Smith</p>
+
+                            <label for="courseDescription">Course Description</label>
+                            <textarea id="courseDescription" name="courseDescription"></textarea>
+                        </div>
+                        <div>
+                            <label for="estimatedTime">Estimated Time</label>
+                            <input id="estimatedTime" name="estimatedTime" type="text" value="">
+
+                            <label for="materialsNeeded">Materials Needed</label>
+                            <textarea id="materialsNeeded" name="materialsNeeded"></textarea>
+                        </div>
+                    </div>
+                    <button class="button" type="submit">Create Course</button><button class="button button-secondary" onclick="event.preventDefault(); location.href='index.html';">Cancel</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
