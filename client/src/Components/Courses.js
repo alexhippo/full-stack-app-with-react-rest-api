@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Courses = () => {
   let [courses] = useState('');
-  const [data, setData] = useState([]);
+  const [data, setData] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Courses = () => {
 
   if (data.length) {
     courses = data.map((course) => {
-      return <a class="course--module course--link" href="course-detail.html">
+      return <a className="course--module course--link" href="course-detail.html">
         <h2>Course</h2>
         <h3>{course.title}</h3>
       </a>
