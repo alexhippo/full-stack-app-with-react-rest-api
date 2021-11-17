@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const CourseDetail = (props) => {
@@ -6,8 +7,10 @@ const CourseDetail = (props) => {
   const [course, setCourseDetail] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const { id } = useParams();
+
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/courses/${props.id}`)
+    axios.get(`http://localhost:5000/api/courses/${id}`)
       .then(response => setCourseDetail(response.data))
       .catch(error => console.log('Error fetching and parsing course', error))
       .finally(() => {
@@ -35,28 +38,36 @@ const CourseDetail = (props) => {
           <h3 className="course--detail--title">Materials Needed</h3>
           <ul className="course--detail--list">
             {course.materialsNeeded ?
-              course.materialsNeeded.split('*').map((material) => <li>{material}</li>)
+              course.materialsNeeded.split('*').map((material, index) => {
+                if (material) {
+                  return <li key={index}>{material}</li>
+                } else {
+                  return null;
+                }
+              })
               : ''}
           </ul>
         </div>
       </div>
-    </div>
+    </div >
   } else {
     courseDetail = null;
   }
 
 
   return (
-    <div>
-      <div class="actions--bar">
-        <div class="wrap">
-          <a class="button" href="update-course.html">Update Course</a>
-          <a class="button" href="#">Delete Course</a>
-          <a class="button button-secondary" href="index.html">Return to List</a>
+    isLoading ?
+      <h2>Loading ...</h2>
+      : <div>
+        <div className="actions--bar">
+          <div className="wrap">
+            <a className="button" href="update-course.html">Update Course</a>
+            <a className="button" href="#">Delete Course</a>
+            <a className="button button-secondary" href="index.html">Return to List</a>
+          </div>
         </div>
+        {courseDetail}
       </div>
-      {courseDetail}
-    </div>
   )
 
 }
