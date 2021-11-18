@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import CourseDetail from "./CourseDetail";
 
 const Courses = () => {
   let [courses] = useState('');
