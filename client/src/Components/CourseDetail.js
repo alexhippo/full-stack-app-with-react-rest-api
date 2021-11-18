@@ -54,6 +54,10 @@ const CourseDetail = (props) => {
     courseDetail = null;
   }
 
+  const handleDelete = () => {
+
+  }
+
 
   return (
     isLoading ?
@@ -62,7 +66,7 @@ const CourseDetail = (props) => {
         <div className="actions--bar">
           <div className="wrap">
             <Link to={`/courses/${id}/update`} className="button">Update Course</Link>
-            <a className="button" href="#">Delete Course</a>
+            <a className="button" onClick={handleDelete}>Delete Course</a>
             <Link to='/' className="button button-secondary">Return to List</Link>
           </div>
         </div>
