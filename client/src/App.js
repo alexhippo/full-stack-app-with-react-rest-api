@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import Header from './Components/Header';
 import Courses from './Components/Courses';
 import CourseDetail from './Components/CourseDetail';
 import UpdateCourse from './Components/UpdateCourse';
@@ -11,6 +12,7 @@ import CreateCourse from './Components/CreateCourse';
 function App() {
   return (
     <div id="root">
+      <Header />
       <main>
         <Routes>
           <Route path="/" element={<Courses />} />
