@@ -49,7 +49,7 @@ const CourseDetail = (props) => {
           </ul>
         </div>
       </div>
-    </div >
+    </div>
   } else {
     courseDetail = null;
   }
