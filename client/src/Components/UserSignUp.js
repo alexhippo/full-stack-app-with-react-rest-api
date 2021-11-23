@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import Context from '../Context';
 import { Link, useNavigate } from 'react-router-dom';
 
 const UserSignUp = () => {
+  const context = useContext(Context.Context);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
@@ -31,8 +33,30 @@ const UserSignUp = () => {
     }
   }
 
-  const submit = () => {
+  const submit = (event) => {
+    event.preventDefault();
+    // Create user
+    const user = {
+      firstName,
+      lastName,
+      emailAddress,
+      password,
+    };
 
+    context.data.createUser(user)
+      .then(errors => {
+        if (errors.length) {
+          setErrors(errors);
+        } else {
+          context.actions.signIn(emailAddress, password)
+            .then(() => {
+              navigate('/');
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   const cancel = () => {
