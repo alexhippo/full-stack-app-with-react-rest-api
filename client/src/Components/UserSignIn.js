@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Context from '../Context';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const UserSignIn = () => {
   const context = useContext(Context.Context);
@@ -9,6 +9,7 @@ const UserSignIn = () => {
   const [errors, setErrors] = useState([]);
 
   let navigate = useNavigate();
+  let location = useLocation();
 
   const onChange = (event) => {
     const name = event.target.name;
@@ -25,14 +26,14 @@ const UserSignIn = () => {
 
   const submit = (event) => {
     event.preventDefault();
-    //const { from } = location.state || { from: { pathname: '/' } };
+    const { from } = location.state || { from: { pathname: '/' } };
 
     context.actions.signIn(emailAddress, password)
       .then((user) => {
         if (user === null) {
           setErrors({ errors: ['Sign in was unsuccessful'] });
         } else {
-          navigate('/');
+          navigate(from);
         }
       })
       .catch((error) => {

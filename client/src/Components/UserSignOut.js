@@ -1,15 +1,20 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import Context from '../Context';
+import { useNavigate } from 'react-router-dom';
 
-const signOut = () => {
-  // @todo Add signout function here
+const UserSignOut = () => {
+  const context = useContext(Context.Context);
 
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    context.actions.signOut();
+    navigate('/');
+  });
 
   return (
-    <Routes>
-      <Route path="/signout" element={<Navigate replace to="/" />} />
-    </Routes>
+    <div></div>
   )
 }
 
-export default signOut;
+export default UserSignOut;
