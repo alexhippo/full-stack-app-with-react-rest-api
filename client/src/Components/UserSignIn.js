@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import Context from '../Context';
 import { Link, useNavigate } from 'react-router-dom';
 
 const UserSignIn = () => {
+  const context = useContext(Context.Context);
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
@@ -21,8 +23,21 @@ const UserSignIn = () => {
     }
   }
 
-  const submit = () => {
+  const submit = (event) => {
+    event.preventDefault();
+    //const { from } = location.state || { from: { pathname: '/' } };
 
+    context.actions.signIn(emailAddress, password)
+      .then((user) => {
+        if (user === null) {
+          setErrors({ errors: ['Sign in was unsuccessful'] });
+        } else {
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   const cancel = () => {

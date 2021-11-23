@@ -10,6 +10,10 @@ import UserSignUp from './Components/UserSignUp';
 import UserSignOut from './Components/UserSignOut';
 import CreateCourse from './Components/CreateCourse';
 
+import { withContext, Context } from './Context';
+
+const UserSignInWithContext = withContext(UserSignIn);
+
 function App() {
   return (
     <div id="root">
@@ -19,7 +23,7 @@ function App() {
           <Route path="/" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/courses/:id/update" element={<UpdateCourse />} />
-          <Route path="/signin" element={<UserSignIn />} />
+          <Route path="/signin" element={<UserSignInWithContext />} />
           <Route path="/signup" element={<UserSignUp />} />
           <Route path="/signout" element={<UserSignOut />} />
           <Route path="/courses/create" element={<CreateCourse />} />
