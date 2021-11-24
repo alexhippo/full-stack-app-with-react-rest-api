@@ -66,19 +66,19 @@ const UpdateCourse = () => {
         <div className="main--flex">
           <div>
             <label htmlFor="courseTitle">Course Title</label>
-            <input id="courseTitle" name="courseTitle" type="text" defaultValue={courseTitle} />
+            <input id="courseTitle" name="courseTitle" type="text" defaultValue={courseTitle} onChange={onChange} />
 
             <p>By {courseUserFirstName} {courseUserLastName}</p>
 
             <label htmlFor="courseDescription">Course Description</label>
-            <textarea id="courseDescription" name="courseDescription" defaultValue={courseDescription}></textarea>
+            <textarea id="courseDescription" name="courseDescription" defaultValue={courseDescription} onChange={onChange}></textarea>
           </div>
           <div>
             <label htmlFor="estimatedTime">Estimated Time</label>
-            <input id="estimatedTime" name="estimatedTime" type="text" defaultValue={estimatedTime} />
+            <input id="estimatedTime" name="estimatedTime" type="text" defaultValue={estimatedTime} onChange={onChange} />
 
             <label htmlFor="materialsNeeded">Materials Needed</label>
-            <textarea id="materialsNeeded" name="materialsNeeded" defaultValue={materialsNeeded}></textarea>
+            <textarea id="materialsNeeded" name="materialsNeeded" defaultValue={materialsNeeded} onChange={onChange}></textarea>
           </div>
         </div>
         <button className="button" type="submit" onClick={submit}>Update Course</button>

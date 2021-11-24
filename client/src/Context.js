@@ -6,7 +6,7 @@ export const Context = React.createContext();
 
 export class Provider extends Component {
   state = {
-    authenticatedUser: Cookies.getJSON('authenticatedUser') || null
+    authenticatedUser: Cookies.getJSON('authenticatedUser') || null,
   };
 
   constructor() {
@@ -31,16 +31,15 @@ export class Provider extends Component {
     );
   }
 
-
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password);
     if (user !== null) {
       this.setState(() => {
         return {
-          authenticatedUser: user,
+          authenticatedUser: { ...user, ...{ password } }
         };
       });
-      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+      Cookies.set('authenticatedUser', JSON.stringify(this.state.authenticatedUser), { expires: 1 });
     }
     return user;
   }

@@ -8,6 +8,7 @@ const UserSignIn = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
+
   let navigate = useNavigate();
   let location = useLocation();
 
@@ -32,12 +33,14 @@ const UserSignIn = () => {
       .then((user) => {
         if (user === null) {
           setErrors({ errors: ['Sign in was unsuccessful'] });
+          console.log(errors);
         } else {
           navigate(from);
         }
       })
       .catch((error) => {
         console.error(error);
+        navigate('/error');
       });
   }
 
@@ -48,8 +51,18 @@ const UserSignIn = () => {
   return (
     <div className="form--centered">
       <h2>Sign In</h2>
-
       <form>
+        {errors.length ?
+          <div>
+            <h3 className="validation--errors--label">Validation errors</h3>
+            <div className="validation-errors">
+              <ul>
+                {errors.map((error, i) => <li key={i}>{error}</li>)}
+              </ul>
+            </div>
+          </div>
+          : null
+        }
         <label htmlFor="emailAddress">Email Address</label>
         <input id="emailAddress" name="emailAddress" type="email" value={emailAddress} onChange={onChange} />
         <label htmlFor="password">Password</label>
