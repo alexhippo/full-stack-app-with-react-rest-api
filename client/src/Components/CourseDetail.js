@@ -24,7 +24,7 @@ const CourseDetail = () => {
       });
   }, []);
 
-  if (course) {
+  if (course.id) {
     courseDetail = <div className="wrap">
       <h2>Course Detail</h2>
       <div className="main--flex">
