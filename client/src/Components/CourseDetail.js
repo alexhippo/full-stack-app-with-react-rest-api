@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
 import Context from '../Context';
 
@@ -34,7 +35,7 @@ const CourseDetail = () => {
             ? (<p>By {course.User.firstName} {course.User.lastName}</p>)
             : null
           }
-          <p>{course.description}</p>
+          <ReactMarkdown>{course.description}</ReactMarkdown>
         </div>
         <div>
           <h3 className="course--detail--title">Estimated Time</h3>
@@ -42,15 +43,7 @@ const CourseDetail = () => {
 
           <h3 className="course--detail--title">Materials Needed</h3>
           <ul className="course--detail--list">
-            {course.materialsNeeded ?
-              course.materialsNeeded.split('*').map((material, index) => {
-                if (material) {
-                  return <li key={index}>{material}</li>
-                } else {
-                  return null;
-                }
-              })
-              : ''}
+            <ReactMarkdown>{course.materialsNeeded}</ReactMarkdown>
           </ul>
         </div>
       </div>
