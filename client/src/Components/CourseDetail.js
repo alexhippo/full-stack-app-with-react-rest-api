@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Context from '../Context';
 
-const CourseDetail = (props) => {
+const CourseDetail = () => {
+  const context = useContext(Context.Context);
   let courseDetail = useState('');
   const [course, setCourseDetail] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [errors, setErrors] = useState([]);
+  const authUser = context.authenticatedUser;
 
   const { id } = useParams();
+  let navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`http://localhost:5000/api/courses/${id}`)
@@ -54,8 +59,20 @@ const CourseDetail = (props) => {
     courseDetail = null;
   }
 
-  const handleDelete = () => {
-
+  const handleDelete = (event) => {
+    event.preventDefault();
+    context.data.deleteCourse(id, authUser.emailAddress, authUser.password)
+      .then(errors => {
+        if (errors.length) {
+          setErrors(errors);
+        } else {
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        navigate('/error');
+      });
   }
 
 
