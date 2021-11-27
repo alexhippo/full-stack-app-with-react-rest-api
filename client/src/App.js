@@ -9,6 +9,9 @@ import UserSignIn from './Components/UserSignIn';
 import UserSignUp from './Components/UserSignUp';
 import UserSignOut from './Components/UserSignOut';
 import CreateCourse from './Components/CreateCourse';
+import NotFound from './Components/NotFound';
+import Forbidden from './Components/Forbidden';
+import UnhandledError from './Components/UnhandledError';
 
 import { withContext, Context } from './Context';
 import PrivateRoute from './PrivateRoute';
@@ -32,6 +35,9 @@ function App() {
           <Route path="/courses/create" element={<PrivateRoute />}>
             <Route path="/courses/create" element={<CreateCourse />} />
           </Route>
+          <Route path="/notfound" element={<NotFound />} />
+          <Route path="/forbidden" element={<Forbidden />} />
+          <Route path="/error" element={<UnhandledError />} />
         </Routes>
       </main>
     </div>

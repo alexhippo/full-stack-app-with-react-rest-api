@@ -49,7 +49,8 @@ const CourseDetail = () => {
       </div>
     </div>
   } else {
-    courseDetail = null;
+    console.error('Course Not Found');
+    navigate('/notfound');
   }
 
   const handleDelete = (event) => {
@@ -71,7 +72,7 @@ const CourseDetail = () => {
   return (
     isLoading ?
       <h2>Loading ...</h2>
-      : <div>
+      : course ? <div>
         <div className="actions--bar">
           <div className="wrap">
             {authUser && (authUser.id === course.User.id) ?
@@ -87,6 +88,7 @@ const CourseDetail = () => {
         </div>
         {courseDetail}
       </div>
+        : null
   )
 
 }
