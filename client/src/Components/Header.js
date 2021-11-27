@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   const context = useContext(Context.Context);
   const authUser = context.authenticatedUser;
+
   return (
     <header>
       <div className="wrap header--flex">
