@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import Context from '../Context';
 
 const UpdateCourse = () => {
+  const context = useContext(Context.Context);
   const [isLoading, setIsLoading] = useState(true);
   const [courseTitle, setCourseTitle] = useState('');
   const [courseUserFirstName, setCourseUserFirstName] = useState('');
@@ -10,6 +12,8 @@ const UpdateCourse = () => {
   const [courseDescription, setCourseDescription] = useState('');
   const [estimatedTime, setEstimatedTime] = useState('');
   const [materialsNeeded, setMaterialsNeeded] = useState('');
+  const [errors, setErrors] = useState([]);
+  const authUser = context.authenticatedUser;
 
   const { id } = useParams();
   let navigate = useNavigate();
@@ -51,8 +55,28 @@ const UpdateCourse = () => {
     }
   }
 
-  const submit = () => {
+  const submit = (event) => {
+    event.preventDefault();
+    const course = {
+      title: courseTitle,
+      description: courseDescription,
+      estimatedTime,
+      materialsNeeded,
+      userId: authUser.id,
+    };
 
+    context.data.updateCourse(id, course, authUser.emailAddress, authUser.password)
+      .then(errors => {
+        if (errors.length) {
+          setErrors(errors);
+        } else {
+          navigate('/');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        navigate('/error');
+      });
   }
 
   const cancel = () => {
