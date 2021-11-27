@@ -86,6 +86,15 @@ const UpdateCourse = () => {
   return (
     <div className="wrap">
       <h2>Update Course</h2>
+      {errors.length ?
+        <div className="validation--errors">
+          <h3>Validation Errors</h3>
+          <ul>
+            {errors.map((error, i) => <li key={i}>{error}</li>)}
+          </ul>
+        </div>
+        : null
+      }
       <form>
         <div className="main--flex">
           <div>

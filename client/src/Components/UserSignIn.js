@@ -30,12 +30,11 @@ const UserSignIn = () => {
     const { from } = location.state || { from: { pathname: '/' } };
 
     context.actions.signIn(emailAddress, password)
-      .then((user) => {
-        if (user === null) {
-          setErrors({ errors: ['Sign in was unsuccessful'] });
-          console.log(errors);
-        } else {
+      .then((response) => {
+        if (response !== null && response.id) {
           navigate(from);
+        } else {
+          setErrors(response.message);
         }
       })
       .catch((error) => {
@@ -51,18 +50,16 @@ const UserSignIn = () => {
   return (
     <div className="form--centered">
       <h2>Sign In</h2>
+      {errors.length ?
+        <div className="validation--errors">
+          <h3>Validation Errors</h3>
+          <ul>
+            <li>{errors}</li>
+          </ul>
+        </div>
+        : null
+      }
       <form>
-        {errors.length ?
-          <div>
-            <h3 className="validation--errors--label">Validation errors</h3>
-            <div className="validation-errors">
-              <ul>
-                {errors.map((error, i) => <li key={i}>{error}</li>)}
-              </ul>
-            </div>
-          </div>
-          : null
-        }
         <label htmlFor="emailAddress">Email Address</label>
         <input id="emailAddress" name="emailAddress" type="email" value={emailAddress} onChange={onChange} />
         <label htmlFor="password">Password</label>
