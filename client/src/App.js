@@ -25,6 +25,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Courses />} />
+          <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/courses/:id/update" element={<PrivateRoute />}>
             <Route path="/courses/:id/update" element={<UpdateCourse />} />
@@ -38,6 +39,7 @@ function App() {
           <Route path="/notfound" element={<NotFound />} />
           <Route path="/forbidden" element={<Forbidden />} />
           <Route path="/error" element={<UnhandledError />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>

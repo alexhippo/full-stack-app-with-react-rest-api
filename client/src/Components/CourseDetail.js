@@ -17,7 +17,13 @@ const CourseDetail = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:5000/api/courses/${id}`)
-      .then(response => setCourseDetail(response.data))
+      .then(response => {
+        if (response.data.id) {
+          setCourseDetail(response.data)
+        } else {
+          navigate('/notfound');
+        }
+      })
       .catch(error => console.log('Error fetching and parsing course', error))
       .finally(() => {
         setIsLoading(false);
@@ -48,9 +54,6 @@ const CourseDetail = () => {
         </div>
       </div>
     </div>
-  } else {
-    console.error('Course Not Found');
-    navigate('/notfound');
   }
 
   const handleDelete = (event) => {
