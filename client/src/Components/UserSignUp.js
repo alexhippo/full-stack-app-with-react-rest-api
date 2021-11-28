@@ -67,7 +67,15 @@ const UserSignUp = () => {
   return (
     <div className="form--centered">
       <h2>Sign Up</h2>
-
+      {errors.length ?
+        <div className="validation--errors">
+          <h3>Validation Errors</h3>
+          <ul>
+            {errors.map((error, i) => <li key={i}>{error}</li>)}
+          </ul>
+        </div>
+        : null
+      }
       <form>
         <label htmlFor="firstName">First Name</label>
         <input id="firstName" name="firstName" type="text" value={firstName} onChange={onChange} />

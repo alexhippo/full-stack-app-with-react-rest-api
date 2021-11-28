@@ -52,10 +52,8 @@ const UserSignIn = () => {
       <h2>Sign In</h2>
       {errors.length ?
         <div className="validation--errors">
-          <h3>Validation Errors</h3>
-          <ul>
-            <li>{errors}</li>
-          </ul>
+          <h3>Sign in unsuccessful</h3>
+          <p>Please check your email address and password and try again.</p>
         </div>
         : null
       }

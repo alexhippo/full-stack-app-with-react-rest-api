@@ -142,6 +142,10 @@ header nav a:hover {
     margin-bottom: 0;
 }
 
+.validation--errors p {
+    margin-bottom: 0;
+}
+
 .form--centered {
     max-width: 510px;
     margin: 0 auto;
