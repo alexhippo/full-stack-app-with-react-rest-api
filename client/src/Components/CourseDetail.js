@@ -24,7 +24,10 @@ const CourseDetail = () => {
           navigate('/notfound');
         }
       })
-      .catch(error => console.log('Error fetching and parsing course', error))
+      .catch((error) => {
+        console.error('Error fetching and parsing course', error);
+        navigate('/error');
+      })
       .finally(() => {
         setIsLoading(false);
       });

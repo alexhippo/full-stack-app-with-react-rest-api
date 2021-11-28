@@ -54,8 +54,9 @@ const UserSignUp = () => {
             });
         }
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.error(error);
+        navigate('/error');
       });
   }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Courses = () => {
@@ -7,10 +7,15 @@ const Courses = () => {
   const [data, setData] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
+  let navigate = useNavigate();
+
   useEffect(() => {
     axios.get(`http://localhost:5000/api/courses`)
       .then(response => setData(response.data))
-      .catch(error => console.log('Error fetching and parsing data', error))
+      .catch((error) => {
+        console.error('Error fetching and parsing data', error);
+        navigate('/error');
+      })
       .finally(() => setIsLoading(false));
   }, []);
 
