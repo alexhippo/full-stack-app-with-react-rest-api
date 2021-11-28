@@ -1,3 +1,5 @@
-export default {
-  apiBaseUrl: 'http://localhost:5000/api',
-};
+const Config = () => (
+  { apiBaseUrl: 'http://localhost:5000/api' }
+);
+
+export default Config;

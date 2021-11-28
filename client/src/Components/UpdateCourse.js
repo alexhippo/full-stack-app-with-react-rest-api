@@ -10,7 +10,6 @@ const UpdateCourse = () => {
   const [title, setCourseTitle] = useState('');
   const [courseUserFirstName, setCourseUserFirstName] = useState('');
   const [courseUserLastName, setCourseUserLastName] = useState('');
-  const [courseUserId, setCourseUserId] = useState('');
   const [description, setCourseDescription] = useState('');
   const [estimatedTime, setEstimatedTime] = useState('');
   const [materialsNeeded, setMaterialsNeeded] = useState('');
@@ -28,7 +27,6 @@ const UpdateCourse = () => {
           setCourseDescription(response.data.description);
           setCourseUserFirstName(response.data.User.firstName);
           setCourseUserLastName(response.data.User.lastName);
-          setCourseUserId(response.data.User.id);
           setEstimatedTime(response.data.estimatedTime);
           setMaterialsNeeded(response.data.materialsNeeded);
         } else {
@@ -39,7 +37,7 @@ const UpdateCourse = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [authUser.id, id, navigate]);
 
   const onChange = (event) => {
     const name = event.target.name;

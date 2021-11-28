@@ -18,7 +18,7 @@ const Courses = () => {
         navigate('/error');
       })
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [navigate]);
 
   if (data.length) {
     courses = data.map((course) => {
