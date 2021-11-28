@@ -13,10 +13,7 @@ import NotFound from './Components/NotFound';
 import Forbidden from './Components/Forbidden';
 import UnhandledError from './Components/UnhandledError';
 
-import { withContext, Context } from './Context';
 import PrivateRoute from './PrivateRoute';
-
-const UserSignInWithContext = withContext(UserSignIn);
 
 function App() {
   return (
@@ -30,7 +27,7 @@ function App() {
           <Route path="/courses/:id/update" element={<PrivateRoute />}>
             <Route path="/courses/:id/update" element={<UpdateCourse />} />
           </Route>
-          <Route path="/signin" element={<UserSignInWithContext />} />
+          <Route path="/signin" element={<UserSignIn />} />
           <Route path="/signup" element={<UserSignUp />} />
           <Route path="/signout" element={<UserSignOut />} />
           <Route path="/courses/create" element={<PrivateRoute />}>
