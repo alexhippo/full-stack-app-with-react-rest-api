@@ -186,6 +186,7 @@ textarea {
     border-radius: .5rem;
     font-weight: bold;
     transition: background 0.2s;
+    font-family: 'Work Sans', sans-serif;
 }
 .button:last-child {
     margin-bottom: 0;

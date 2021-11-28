@@ -10,7 +10,6 @@ const CourseDetail = () => {
   let courseDetail = useState('');
   const [course, setCourseDetail] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [errors, setErrors] = useState([]);
   const authUser = context.authenticatedUser;
 
   const { id } = useParams();
@@ -32,7 +31,7 @@ const CourseDetail = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [id, navigate]);
 
   if (course.id) {
     courseDetail = <div className="wrap">
@@ -63,9 +62,9 @@ const CourseDetail = () => {
   const handleDelete = (event) => {
     event.preventDefault();
     context.data.deleteCourse(id, authUser.emailAddress, authUser.password)
-      .then(errors => {
-        if (errors.length) {
-          setErrors(errors);
+      .then((response) => {
+        if (response.length) {
+          navigate('/error');
         } else {
           navigate('/');
         }
@@ -87,7 +86,7 @@ const CourseDetail = () => {
               : null
             }
             {authUser && (authUser.id === course.User.id) ?
-              <a className="button" onClick={handleDelete}>Delete Course</a>
+              <button className="button" onClick={handleDelete}>Delete Course</button>
               : null
             }
             <Link to='/' className="button button-secondary">Return to List</Link>
