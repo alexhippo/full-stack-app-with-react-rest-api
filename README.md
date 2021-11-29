@@ -1,6 +1,14 @@
 # Full Stack App with React and a REST API
 
-This project is a Full Stack React application utilising the [School Database REST API built in a previous project.](https://github.com/alexhippo/rest-api-sql-v3)
+This project is a Full Stack React application utilising the [School Database REST API built in a previous project.](https://github.com/alexhippo/rest-api-sql-v3). Users can use the web interface built with React to:
+- sign up
+- sign in
+- view courses
+- create a course (if signed in)
+- update their own courses (if authorised)
+- delete their own courses (if authorised)
+
+This app was implemented according to the designs specified in the `/mockups` and `/markup` folder.
 
 ## Motivation
 This project was created as part of the [Treehouse Full Stack Javascript Techdegree](https://teamtreehouse.com/techdegree/full-stack-javascript).
