@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import axios from 'axios';
-import Context from '../Context';
-import Loading from './Loading';
+import Context from '../../Context';
+import Loading from '../Loading';
 
 const CourseDetail = () => {
   const context = useContext(Context.Context);

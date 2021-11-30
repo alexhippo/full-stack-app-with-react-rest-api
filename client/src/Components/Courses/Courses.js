@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Loading from './Loading';
+import Loading from '../Loading';
 
 const Courses = () => {
   let [courses] = useState('');

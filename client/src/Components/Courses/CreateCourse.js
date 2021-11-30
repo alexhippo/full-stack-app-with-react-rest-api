@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Context from '../Context';
+import Context from '../../Context';
 
 const CreateCourse = () => {
   const context = useContext(Context.Context);

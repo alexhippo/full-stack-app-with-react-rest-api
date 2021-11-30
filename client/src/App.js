@@ -1,14 +1,14 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import Header from './Components/Header';
-import Courses from './Components/Courses';
-import CourseDetail from './Components/CourseDetail';
-import UpdateCourse from './Components/UpdateCourse';
+import Courses from './Components/Courses/Courses';
+import CourseDetail from './Components/Courses/CourseDetail';
+import UpdateCourse from './Components/Courses/UpdateCourse';
 import UserSignIn from './Components/UserSignIn';
 import UserSignUp from './Components/UserSignUp';
 import UserSignOut from './Components/UserSignOut';
-import CreateCourse from './Components/CreateCourse';
+import CreateCourse from './Components/Courses/CreateCourse';
 import NotFound from './Components/NotFound';
 import Forbidden from './Components/Forbidden';
 import UnhandledError from './Components/UnhandledError';
@@ -21,7 +21,7 @@ function App() {
       <Header />
       <main>
         <Routes>
-          <Route path="/" element={<Courses />} />
+          <Route path="/" element={<Navigate replace to="/courses" />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="/courses/:id/update" element={<PrivateRoute />}>
