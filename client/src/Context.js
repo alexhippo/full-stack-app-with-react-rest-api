@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import Data from './Data';
 
-export const Context = React.createContext();
+const Context = React.createContext();
 
 export class Provider extends Component {
   state = {
@@ -68,4 +68,5 @@ export function withContext(Component) {
   }
 }
 
-export default { withContext, Context };
+const contextObjects = { withContext, Context };
+export default contextObjects;
