@@ -22,18 +22,25 @@ const UpdateCourse = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/api/courses/${id}`)
       .then(response => {
-        if (authUser.id === response.data.User.id) {
-          setCourseTitle(response.data.title);
-          setCourseDescription(response.data.description);
-          setCourseUserFirstName(response.data.User.firstName);
-          setCourseUserLastName(response.data.User.lastName);
-          setEstimatedTime(response.data.estimatedTime);
-          setMaterialsNeeded(response.data.materialsNeeded);
+        if (response.data.error === "Sorry, we couldn't find the course you were looking for.") {
+          navigate('/notfound');
         } else {
-          navigate('/forbidden');
+          if (authUser.id === response.data.User.id) {
+            setCourseTitle(response.data.title);
+            setCourseDescription(response.data.description);
+            setCourseUserFirstName(response.data.User.firstName);
+            setCourseUserLastName(response.data.User.lastName);
+            setEstimatedTime(response.data.estimatedTime);
+            setMaterialsNeeded(response.data.materialsNeeded);
+          } else {
+            navigate('/forbidden');
+          }
         }
       })
-      .catch(error => console.log('Error fetching and parsing course', error))
+      .catch(error => {
+        console.error('Error fetching and parsing data', error);
+        navigate('/error');
+      })
       .finally(() => {
         setIsLoading(false);
       });
