@@ -9,9 +9,9 @@ import UserSignIn from './Components/UserSignIn';
 import UserSignUp from './Components/UserSignUp';
 import UserSignOut from './Components/UserSignOut';
 import CreateCourse from './Components/Courses/CreateCourse';
-import NotFound from './Components/NotFound';
-import Forbidden from './Components/Forbidden';
-import UnhandledError from './Components/UnhandledError';
+import NotFound from './Components/Errors/NotFound';
+import Forbidden from './Components/Errors/Forbidden';
+import UnhandledError from './Components/Errors/UnhandledError';
 
 import PrivateRoute from './PrivateRoute';
 
