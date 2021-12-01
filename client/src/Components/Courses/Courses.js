@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import Context from '../../Context';
 import Loading from '../Loading';
 
 const Courses = () => {
+  const context = useContext(Context.Context);
   let [courses] = useState('');
   const [data, setData] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -11,17 +12,16 @@ const Courses = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/courses`)
+    context.data.getCourses()
       .then((response) => {
-        // Set the data to provide each course
-        setData(response.data)
+        setData(response);
       })
       .catch((error) => {
         console.error('Error fetching and parsing data', error);
         navigate('/error');
       })
       .finally(() => setIsLoading(false));
-  }, [navigate]);
+  }, [navigate, context.data]);
 
   if (data.length) {
     courses = data.map((course) => {
