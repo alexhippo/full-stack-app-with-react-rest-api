@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios';
 import Context from '../../Context';
 import Loading from '../Loading';
 
@@ -46,7 +45,7 @@ const UpdateCourse = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [authUser.id, id, navigate]);
+  }, [authUser.id, id, navigate, context.data]);
 
   const onChange = (event) => {
     const name = event.target.name;
