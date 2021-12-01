@@ -26,6 +26,7 @@ const UserSignIn = () => {
 
   const submit = (event) => {
     event.preventDefault();
+    // Navigate to where the user visited the Sign In page "from", if applicable
     const { from } = location.state || { from: { pathname: '/' } };
 
     context.actions.signIn(emailAddress, password)

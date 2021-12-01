@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const UnhandledError = () => {
   const navigate = useNavigate();
+
   return (
     <div className="wrap">
       <h2>Error</h2>

@@ -36,7 +36,7 @@ const CreateCourse = () => {
 
   const submit = (event) => {
     event.preventDefault();
-    // Create course
+    // Course object to create a course
     const course = {
       title: courseTitle,
       description: courseDescription,
@@ -81,7 +81,7 @@ const CreateCourse = () => {
             <label htmlFor="courseTitle">Course Title</label>
             <input id="courseTitle" name="courseTitle" type="text" value={courseTitle} onChange={onChange} />
 
-            {/* Set user */}
+            {/* Use current authenticated user's first name and last name as course author */}
             <p>By {authUser.firstName} {authUser.lastName}</p>
 
             <label htmlFor="courseDescription">Course Description</label>

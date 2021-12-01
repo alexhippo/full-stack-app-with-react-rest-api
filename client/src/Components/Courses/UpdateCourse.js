@@ -25,6 +25,8 @@ const UpdateCourse = () => {
         if (response.data.error === "Sorry, we couldn't find the course you were looking for.") {
           navigate('/notfound');
         } else {
+          // If the currently authenticated user is the same as the Course author
+          // Allow the user to update the Course
           if (authUser.id === response.data.User.id) {
             setCourseTitle(response.data.title);
             setCourseDescription(response.data.description);
@@ -69,6 +71,7 @@ const UpdateCourse = () => {
 
   const submit = (event) => {
     event.preventDefault();
+    // Course object to update the course
     const course = {
       title,
       description,

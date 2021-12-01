@@ -12,7 +12,10 @@ const Courses = () => {
 
   useEffect(() => {
     axios.get(`http://localhost:5000/api/courses`)
-      .then(response => setData(response.data))
+      .then((response) => {
+        // Set the data to provide each course
+        setData(response.data)
+      })
       .catch((error) => {
         console.error('Error fetching and parsing data', error);
         navigate('/error');

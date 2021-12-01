@@ -16,11 +16,14 @@ const CourseDetail = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
+    // Fetch a course from the database
     axios.get(`http://localhost:5000/api/courses/${id}`)
       .then(response => {
+        // If there is a course ID, then the course exists!
         if (response.data.id) {
           setCourseDetail(response.data)
         } else {
+          // If there is no course ID, direct to Not Found
           navigate('/notfound');
         }
       })
@@ -63,6 +66,7 @@ const CourseDetail = () => {
     event.preventDefault();
     context.data.deleteCourse(id, authUser.emailAddress, authUser.password)
       .then((response) => {
+        // If course deletion is successful, then there should be no response returned
         if (response.length) {
           navigate('/error');
         } else {

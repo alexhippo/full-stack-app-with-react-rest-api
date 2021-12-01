@@ -35,7 +35,7 @@ const UserSignUp = () => {
 
   const submit = (event) => {
     event.preventDefault();
-    // Create user
+    // User object to create a new user
     const user = {
       firstName,
       lastName,
@@ -45,6 +45,7 @@ const UserSignUp = () => {
 
     context.data.createUser(user)
       .then(errors => {
+        // If creating a user is unsuccessful, response with errors would be returned
         if (errors.length) {
           setErrors(errors);
         } else {

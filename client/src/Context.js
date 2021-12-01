@@ -31,6 +31,8 @@ export class Provider extends Component {
     );
   }
 
+
+  // Signs the user in by retrieving the user's details, setting the authenticatedUser state and browser cookies
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password);
     if (user !== null && user.id) {
@@ -44,6 +46,7 @@ export class Provider extends Component {
     return user;
   }
 
+  // Signs the user out by setting a null authenticated user and removing cookies
   signOut = () => {
     this.setState({ authenticatedUser: null });
     Cookies.remove('authenticatedUser');
@@ -57,7 +60,6 @@ export const Consumer = Context.Consumer;
  * @param {class} Component - A React component.
  * @returns {function} A higher-order component.
  */
-
 export function withContext(Component) {
   return function ContextComponent(props) {
     return (

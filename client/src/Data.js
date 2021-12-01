@@ -22,6 +22,7 @@ export default class Data {
     return fetch(url, options);
   }
 
+  // Get the user from the database for Sign In
   async getUser(username, password) {
     const response = await this.api(`/users`, 'GET', null, true, { username, password });
     if (response.status === 200) {
@@ -35,6 +36,7 @@ export default class Data {
     }
   }
 
+  // Create a new user in the database
   async createUser(user) {
     const response = await this.api('/users', 'POST', user);
     if (response.status === 201) {
@@ -50,6 +52,7 @@ export default class Data {
     }
   }
 
+  // Create a new course
   async createCourse(course, username, password) {
     const response = await this.api('/courses', 'POST', course, true, { username, password });
     if (response.status === 201) {
@@ -65,6 +68,7 @@ export default class Data {
     }
   }
 
+  // Delete a particular course
   async deleteCourse(id, username, password) {
     const response = await this.api(`/courses/${id}`, 'DELETE', null, true, { username, password });
     if (response.status === 204) {
@@ -80,6 +84,7 @@ export default class Data {
     }
   }
 
+  // Update a particular course
   async updateCourse(id, course, username, password) {
     const response = await this.api(`/courses/${id}`, 'PUT', course, true, { username, password });
     if (response.status === 204) {
