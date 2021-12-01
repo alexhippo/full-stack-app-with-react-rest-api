@@ -4,10 +4,8 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from './Context';
 
-
 import './styles/reset.css';
 import './styles/global.css';
-
 
 ReactDOM.render(
   <Provider>

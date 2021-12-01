@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import axios from 'axios';
 import Context from '../../Context';
 import Loading from '../Loading';
 
@@ -17,11 +16,10 @@ const CourseDetail = () => {
 
   useEffect(() => {
     // Fetch a course from the database
-    axios.get(`http://localhost:5000/api/courses/${id}`)
+    context.data.getCourse(id)
       .then(response => {
-        // If there is a course ID, then the course exists!
-        if (response.data.id) {
-          setCourseDetail(response.data)
+        if (response.id) {
+          setCourseDetail(response)
         } else {
           // If there is no course ID, direct to Not Found
           navigate('/notfound');
@@ -33,8 +31,8 @@ const CourseDetail = () => {
       })
       .finally(() => {
         setIsLoading(false);
-      });
-  }, [id, navigate]);
+      })
+  }, [id, navigate, context.data]);
 
   if (course.id) {
     courseDetail = <div className="wrap">
@@ -100,7 +98,6 @@ const CourseDetail = () => {
       </div>
         : null
   )
-
 }
 
 export default CourseDetail;
