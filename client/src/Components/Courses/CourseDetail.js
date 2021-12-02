@@ -16,6 +16,7 @@ const CourseDetail = () => {
 
   useEffect(() => {
     // Fetch a course from the database
+    const controller = new AbortController();
     context.data.getCourse(id)
       .then(response => {
         if (response.id) {
@@ -31,7 +32,8 @@ const CourseDetail = () => {
       })
       .finally(() => {
         setIsLoading(false);
-      })
+      });
+    return () => controller?.abort();
   }, [id, navigate, context.data]);
 
   if (course.id) {

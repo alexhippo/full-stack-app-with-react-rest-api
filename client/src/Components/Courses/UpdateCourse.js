@@ -19,8 +19,9 @@ const UpdateCourse = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
+    const controller = new AbortController();
     context.data.getCourse(id)
-      .then(response => {
+      .then((response) => {
         if (response.error === "Sorry, we couldn't find the course you were looking for.") {
           navigate('/notfound');
         } else {
@@ -45,6 +46,7 @@ const UpdateCourse = () => {
       .finally(() => {
         setIsLoading(false);
       });
+    return () => controller?.abort();
   }, [authUser.id, id, navigate, context.data]);
 
   const onChange = (event) => {
