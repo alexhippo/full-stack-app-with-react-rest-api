@@ -186,7 +186,7 @@ textarea {
     border-radius: .5rem;
     font-weight: bold;
     transition: background 0.2s;
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Work Sans', sans-serif;       
 }
 .button:last-child {
     margin-bottom: 0;
@@ -206,12 +206,11 @@ textarea {
     box-shadow: 0 0 0 2px #63537d inset;
     cursor: pointer;
 }
-input:focus, button:focus, .button:focus, textarea:focus {
+input:focus, button:focus, .button:focus, textarea:focus, a:focus {
     border: none;
     border-radius: 0;
-    outline: 2px solid #332a40;
+    outline: 3px solid #332a40;
 }
-
 .loading {
     position: absolute;
     top: 50%;
