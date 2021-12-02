@@ -46,6 +46,7 @@ const UpdateCourse = () => {
       .finally(() => {
         setIsLoading(false);
       });
+    // Clean up to prevent memory leak
     return () => controller?.abort();
   }, [authUser.id, id, navigate, context.data]);
 

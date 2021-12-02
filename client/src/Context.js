@@ -31,8 +31,12 @@ export class Provider extends Component {
     );
   }
 
-
-  // Signs the user in by retrieving the user's details, setting the authenticatedUser state and browser cookies
+  /**
+   * Signs the user in by retrieving the user's details, setting the authenticatedUser state and browser cookies
+   * @param {String} emailAddress 
+   * @param {String} password 
+   * @returns {Object} user
+   */
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password);
     if (user !== null && user.id) {
@@ -46,7 +50,9 @@ export class Provider extends Component {
     return user;
   }
 
-  // Signs the user out by setting a null authenticated user and removing cookies
+  /**
+   * Signs the user out by setting a null authenticated user and removing cookies
+   */
   signOut = () => {
     this.setState({ authenticatedUser: null });
     Cookies.remove('authenticatedUser');

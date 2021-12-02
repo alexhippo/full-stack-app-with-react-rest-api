@@ -33,6 +33,7 @@ const CourseDetail = () => {
       .finally(() => {
         setIsLoading(false);
       });
+    // Clean up to prevent memory leak
     return () => controller?.abort();
   }, [id, navigate, context.data]);
 
