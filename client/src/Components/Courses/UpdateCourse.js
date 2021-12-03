@@ -96,7 +96,8 @@ const UpdateCourse = () => {
       });
   }
 
-  const cancel = () => {
+  const cancel = (event) => {
+    event.preventDefault();
     navigate('/');
   }
 

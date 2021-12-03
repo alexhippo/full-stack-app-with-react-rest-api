@@ -43,7 +43,8 @@ const UserSignIn = () => {
       });
   }
 
-  const cancel = () => {
+  const cancel = (event) => {
+    event.preventDefault();
     navigate('/');
   }
 
