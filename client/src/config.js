@@ -1,5 +1,5 @@
 const config = {
-  apiBaseUrl: 'https://sedate-harmony-production.up.railway.app/api',
+  apiBaseUrl: 'http://localhost:5000/api',
 };
 
 export default config;
